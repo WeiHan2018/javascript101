@@ -202,6 +202,8 @@
         document.getElementById('rootContainer').appendChild(toggleDisplayBtnContainer);
     }
 
+    var isVertical = true; // true: vertical, false: horizontal
+
     function toggleDisplay() {
         /*
         TODO: REVIEW THE CODE IN THE PROVIDED REVERSE EXAMPLE, USE JAVASCRIPT TO ADD A CLICKABLE BUTTON 
@@ -217,6 +219,29 @@
 
             3.  
         */
+        var tagBegin;
+        var tagEnd;
+
+        if (isVertical) {
+            tagBegin = '<span>';
+            tagEnd = '</span>';
+        } else {
+            tagBegin = '<div>';
+            tagEnd = '</div>';
+        }
+        isVertical = !isVertical;
+
+        var rootDiv = document.getElementById('rootContainer');
+        if (rootDiv) {
+            var companyNamesDiv = rootDiv.firstChild;
+            if (companyNamesDiv) {
+                var companyNameEles = companyNamesDiv.childNodes;
+                companyNameEles.forEach(companyNameEle => {
+                    companyNameEle.outerHTML = tagBegin.concat(companyNameEle.innerHTML).concat(tagEnd);
+                });
+            }
+        }
+
     }
     
     function run() {
