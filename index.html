@@ -144,11 +144,36 @@
     function cleanAndCountCharacters() {
         console.log('CLEAN AND COUNT CHARACTERS');
         /*
-            TODO: REMOVES ANY SPECIAL CHARACTERS FROM EACH COMPANY NAME AND
+            Done TODO: REMOVES ANY SPECIAL CHARACTERS FROM EACH COMPANY NAME AND
               DISPLAYS THE NUMBER OF REMAINING CHARACTERS NEXT TO THE FULL WORD.
               DONT FORGET TO REMOVE LEADING AND TRAILING WHITESPACES AS WELL
         */
 
+        // count characters number of each company name
+        var counts = [];
+        for (var i = 0; i < chicagoStartups.length; i++) {
+            var orgCompanyName = chicagoStartups[i].trim();
+            var cnt = 0;
+            for (var j = 0; j < orgCompanyName.length; j++) {
+                var ch = orgCompanyName.charAt(j);
+                if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')) {
+                    cnt++;
+                }
+            }
+            counts.push(" " + cnt);
+        }
+
+        // update company names with characters count
+        var rootDiv = document.getElementById('rootContainer');
+        if (rootDiv) {
+            var companyNamesDiv = rootDiv.firstChild;
+            if (companyNamesDiv) {
+                var companyNameDivs = companyNamesDiv.childNodes;
+                companyNameDivs.forEach((companyNameDiv, index) => {
+                    companyNameDiv.innerHTML = index.toString().concat(' .) ').concat(chicagoStartups[index]).concat(counts[index]);
+                });
+            }
+        }
     }
     
     function initReverse() {
