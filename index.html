@@ -47,6 +47,8 @@
 </style>
 
 <script>
+    // https://github.com/WeiHan2018/javascript101
+
     var colors = ['red', 'blue', 'gold'];
     var chicagoStartups = [
         '  Interior   Define  ',
@@ -160,7 +162,7 @@
                     cnt++;
                 }
             }
-            counts.push(" " + cnt);
+            counts.push(' ' + cnt);
         }
 
         // update company names with characters count
@@ -189,6 +191,17 @@
         document.getElementById('rootContainer').appendChild(reverseContainer);
     }
 
+    // add a button named Toggle Display
+    function initToggleDisplay() {
+        var toggleDisplayBtn = document.createElement('button');
+        var btnText = document.createTextNode('Toggle Display');
+        toggleDisplayBtn.onclick = toggleDisplay;
+        toggleDisplayBtn.appendChild(btnText);
+        var toggleDisplayBtnContainer = document.createElement('div');
+        toggleDisplayBtnContainer.appendChild(toggleDisplayBtn);
+        document.getElementById('rootContainer').appendChild(toggleDisplayBtnContainer);
+    }
+
     function toggleDisplay() {
         /*
         TODO: REVIEW THE CODE IN THE PROVIDED REVERSE EXAMPLE, USE JAVASCRIPT TO ADD A CLICKABLE BUTTON 
@@ -209,6 +222,7 @@
     function run() {
         initDocument();
         initReverse();
+        initToggleDisplay();
     }
     run();
     
