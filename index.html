@@ -34,15 +34,15 @@
     }
 
     .red {
-        background-image: red;
+        background-color: red;
     }
 
     .blue {
-        background-image: blue;
+        background-color: blue;
     }
 
     .gold {
-        background-image: gold;
+        background-color: gold;
     }
 </style>
 
@@ -83,6 +83,10 @@
         var rootDiv = document.createElement('div');
         rootDiv.id = 'rootContainer';
         var companyNamesContainer = document.createElement('div');
+        //var stylesheet = document.styleSheets[0];
+        //var cssRules = stylesheet.cssRules;
+        //var cssRule = cssRules[6];
+        companyNamesContainer.setAttribute('class', 'red');
         chicagoStartups.forEach( function(chicagoStartup, index) {
             var childDiv = document.createElement('div');
             var text = document.createTextNode(index.toString().concat(' .) ').concat(chicagoStartup));
@@ -181,6 +185,7 @@
     function initReverse() {
         var reverseContainer = document.createElement('div');
         reverseContainer.id = 'reverseContainer';
+        reverseContainer.setAttribute('class', 'gold');
         var reverseBtn = document.createElement('button');
         var btnText = document.createTextNode('Reverse');
         reverseBtn.onclick = renderReversedElements;
